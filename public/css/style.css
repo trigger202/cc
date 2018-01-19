@@ -1,0 +1,185 @@
+
+
+
+
+body
+{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    height: 100%;
+}
+
+
+
+
+.dt-buttons a
+{
+    padding: 5px 15px;
+    border-radius: 4px;
+    background: #ed1952;
+    color: #ffffff;
+    margin-right: 3px;
+}
+
+
+.dt-buttons a:hover
+{
+    padding: 5px 15px;
+    border-radius: 4px;
+    background-color: black;
+    margin-right: 3px;
+}
+
+
+#vessel
+{
+    height: 30px;
+    border-radius: 4px;
+}
+
+.vesselSearch
+{
+    height: 30px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+
+
+/*===============start of main menu css===============*/
+
+header
+{
+    font-family:'Roboto', sans-serif;
+    background: #00795f;
+    width: 100%;
+    padding: 5px 0;
+    color: white;
+    text-align: center;
+    /*border-bottom: 2px solid #ed1952;*/
+}
+
+
+nav ul
+{
+    /*background-color: #367391;*/
+    background-color: #111111;
+    overflow: hidden;
+    color: white;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    -webkit-transition: max-height 0.4s;
+    -ms-transition: max-height 0.4s;
+    -moz-transition: max-height 0.4s;
+    -o-transition: max-height 0.4s;
+    transition: max-height 0.4s;
+    border-bottom: 2px solid #ed1952;
+
+}
+
+
+
+nav ul li
+{
+    display: inline-block;
+    padding: 20px;
+    color: white;
+    font-size: 16px;
+
+}
+
+nav ul li:hover
+{
+
+    background-color:#d9084b;
+
+}
+
+nav ul a
+{
+    color:inherit;
+    text-decoration: none;
+}
+
+.handle
+{
+    width: 100%;
+    background: #005c48;
+    box-sizing: border-box;
+    padding: 15px 10px;
+    cursor: pointer;
+    color: white;
+    display: none;
+
+}
+
+.handle span
+{
+    text-align: left;
+
+}
+
+.handle i
+{
+    float: right;
+}
+
+@media only screen and (max-width: 580px)
+{
+
+    nav ul
+    {
+        max-height: 0px;
+    }
+    nav ul li
+    {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 15px;
+        display: list-item;
+        text-align: left;
+    }
+
+        nav ul a
+        {
+            text-decoration: none;
+        }
+    .showing
+    {
+        max-height: 20em;
+    }
+
+    .handle
+    {
+        display: block;;
+    }
+
+}
+
+a
+{
+    text-decoration: none;
+}
+/*end of main menu css*/
+
+
+
+.footer
+{
+   position:fixed;
+   left:0px;
+   padding: 4px;
+   bottom:0px;
+   height:30px;
+   text-align: center;
+   width:100%;
+   background:#999;
+}
+
+/* IE 6 */
+* html #footer {
+   position:absolute;
+   top:expression((0-(footer.offsetHeight)+(document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight)+(ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop))+'px');
+}
