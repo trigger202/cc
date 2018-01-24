@@ -12,6 +12,13 @@ body
 
 
 
+.wrapper
+{
+    box-sizing: border-box;
+    margin-bottom: 50px;
+}
+
+
 
 .dt-buttons a
 {
@@ -101,6 +108,7 @@ nav ul a
 {
     color:inherit;
     text-decoration: none;
+    font-weight: bold;
 }
 
 .handle
@@ -118,13 +126,66 @@ nav ul a
 .handle span
 {
     text-align: left;
-
 }
 
 .handle i
 {
     float: right;
 }
+
+
+
+
+.footer
+{
+   position:fixed;
+   left:0px;
+   padding: 4px;
+   bottom:0px;
+   height:30px;
+   text-align: center;
+   width:100%;
+   background:#999;
+}
+
+
+
+
+
+.vin_search h2
+{
+    text-align: center;
+
+}
+
+.vin_search
+{
+
+    width: 560px;
+    background: lightgrey;
+    padding: 10px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+
+}
+
+.search_button
+{
+    margin:  10px;
+}
+
+.search_button button
+{
+    width: 50%;
+    font-size: 20px;
+}
+
+
+
+
 
 @media only screen and (max-width: 580px)
 {
@@ -156,30 +217,20 @@ nav ul a
         display: block;;
     }
 
+    .vin_search
+    {
+        width: auto;;
+        margin: 0;
+    }
+
+    .container
+    {
+        padding: 0px;
+    }
+
 }
 
-a
-{
-    text-decoration: none;
-}
+
 /*end of main menu css*/
 
 
-
-.footer
-{
-   position:fixed;
-   left:0px;
-   padding: 4px;
-   bottom:0px;
-   height:30px;
-   text-align: center;
-   width:100%;
-   background:#999;
-}
-
-/* IE 6 */
-* html #footer {
-   position:absolute;
-   top:expression((0-(footer.offsetHeight)+(document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight)+(ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop))+'px');
-}

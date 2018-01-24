@@ -13,6 +13,7 @@
 	</script>
 
 
+
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script src="//cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
@@ -36,6 +37,10 @@ $(document).ready(function() {
      });
 
 } );
+
+
+
+$('div.alert').not('.alert-important').delay(5000).fadeOut(550);
 
 
 

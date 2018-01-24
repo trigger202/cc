@@ -24,9 +24,16 @@ Route::get('/logout', 'UserLoginController@destroy');
 route::get('/cc_index', 'ComplianceCentreController@index');
 route::post('/cc_index', 'ComplianceCentreController@index');
 
+
+
+
 route::get('/customers', 'ComplianceCentreController@getCustomers');
 
 route::get('/vin', 'VinController@index');
+route::POST('/search', 'VinController@show');
+route::POST('/update', 'VinController@store');
+
+
 
 
 

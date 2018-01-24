@@ -80,6 +80,7 @@ body
 .loginbutton:hover
 {
   background-color:  #49b691;
+  /*background: #ed1952;*/
   color: white;
   transition: background-color 0.2s ease;
 }
@@ -93,9 +94,6 @@ body
 
 
 
-
-
-
 .passwordPreview:hover
 {
   cursor: pointer;
@@ -104,7 +102,20 @@ body
 /*login form*/
 .content
 {
-  padding: 0 20px;
+  padding: 0 30px;
   background: #415666;
   border-radius: 6px;
+}
+
+@media only screen and (max-width: 580px)
+{
+  .content
+  {
+    width: auto;
+  }
+
+  nav ul li
+  {
+    text-decoration: none;
+  }
 }

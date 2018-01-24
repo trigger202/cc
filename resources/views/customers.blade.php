@@ -14,7 +14,7 @@
 
 	<div class="table-responsive">
 
-		<h2>{{ Session::get('cc_name') }}</h2>
+		<h2>{{ Session::get('cc_name') }} - Customers</h2>
 
 		<table class="table-hover table-responsive table-striped" width="100%" id="table">
 			<thead>
@@ -51,20 +51,7 @@
 @endsection
 
 
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
-
-<script src="{{asset('/assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
-
-
 <script type="text/javascript">
-$(document).ready(function() {
-    $('#table').DataTable( {   "lengthMenu": [[25, 50, 100, -1], [ 25, 50,100, "All"]] });
-
-} );
-
 $(document).ready(function() {
 
 	$('showVessel').click(function()

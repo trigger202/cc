@@ -14,6 +14,10 @@ class CCAPI_Client extends CCAPI
     private $apiURL =   [
                             'getCustomers'=>'getCustomers.php',
                             'vesselList'=>'getIncomingVessels.php',
+                            'vin_search'=>'vin_search.php',
+                            'update_vin'=>'update_vin.php',
+
+
                         ];
     function __construct()
     {
@@ -37,9 +41,6 @@ class CCAPI_Client extends CCAPI
 
     }
 
-
-
-
     public function getCustomers()
     {
 
@@ -49,9 +50,48 @@ class CCAPI_Client extends CCAPI
             $res= $this->request($this->apiURL['getCustomers'],'GET',$token);
             return $res->getBody()->getContents();
         }
-        /*not logged in*/
 
     }
+
+    /*update the vin number in the db (update means insert new or update old value ")*/
+    public function updateVinNumber($queryString)
+    {
+
+        if(!$this->isLoggedIn())
+        {
+            redirect('/login');
+            exit;
+        }
+
+        $queryString = (http_build_query($queryString));
+        $url =$this->apiURL['update_vin'].'?'.$queryString;
+
+
+        $token = $this->getJWT();
+        $res= $this->request($url,'GET',$token);
+        return $res->getBody()->getContents();
+
+    }
+
+
+
+    public function vin_search($queryArray)
+    {
+
+        $queryString = (http_build_query($queryArray));
+        $url =$this->apiURL['vin_search'].'?'.$queryString;
+        if(!$this->isLoggedIn())
+        {
+            redirect('/login');
+            exit;
+        }
+        // dd($url);
+        $token = $this->getJWT();
+        $res= $this->request($url,'GET',$token);
+        return $res->getBody()->getContents();
+
+    }
+
 
     public function isLoggedIn()
     {
@@ -69,3 +109,5 @@ class CCAPI_Client extends CCAPI
 
 
 }
+
+// "vin_search.php?Vin_number=GE6-vin&Consigneeid=ABM"

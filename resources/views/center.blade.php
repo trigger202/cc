@@ -14,7 +14,7 @@
 
 		<div class="table-responsive">
 
-			<h2>{{ Session::get('cc_name') }}</h2>
+			<h2>{{ Session::get('cc_name') }} - Coming Vehicles</h2>
 			<form action="/cc_index" method="POST">
 				{{CSRF_field()}}
 				@if(count($vessels)>2)
