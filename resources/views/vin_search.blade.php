@@ -10,12 +10,14 @@
 @endsection
 
 @section('content')
+<!-- 7AT08G2YX14156027 -->
 
 <div class="vin_search">
 	<h2>{{ Session::get('cc_name') }}  - Vin Search</h2>
 	<hr/>
 
 	@include('flash::message')
+
 	<form class="form-group" action="search" method="POST">
 		{{ CSRF_field()}}
 		<div class="form-group">
@@ -35,7 +37,13 @@
 		<div class="form-group">
 			<label>Enter Vin Number </label>
 
-			<input type="text" name="Vin_number" class="form-control" placeholder="Enter vin number...">
+			<input type="text" name="Vin_number" id="vin_search_input"  class="form-control" placeholder="Enter vin number...">
+			<br>
+
+			<div class="" id="notice" style="color: red">
+				<strong>Match found hit search</strong>
+
+			</div>
 		</div>
 
 
@@ -127,81 +135,29 @@ $("#car").hide();
 
 <script type="text/javascript">
 
+/*IF THE COMPLETE VIN IS ENTERED, CHECK IF MATCH EXISTS IN THE BACK GROUND*/
+	$('#notice').hide();
+	var alertOnce = false;
+   $( "#vin_search_input" ).focus(function()
+   {
+	   	$("#vin_search_input").on('input', function()
+	   	{
+			    var vin = $("#vin_search_input").val();
+	   			var Consigneeid = $('#Consigneeid').val();
+	   			if(vin.length==17 && Consigneeid!='')
+	   			{
+	   				$.post('background_search',{'Vin_number':vin,'Consigneeid':Consigneeid,  "_token": "{{ csrf_token() }}",}, function(result)
+	   				{
+	   					if(result==1)
+	   					{
+	   						$('#notice').show();
+	   					}
+	   				});
+	   			}
+	   	});
 
 
-
-
-// $(document).ready(function() {
-// 	var alertOnce = false;
-//    $( ".vin_search_input" ).focus(function() {
-
-
-//    	console.log('yes its focused');
-
-//    	$('.vin_search_input').on('input', function()
-//    	{
-// 		    var vin = $('.vin_search_input').val();
-//    			var Consigneeid = $('#Consigneeid').val();
-//    			if(vin.length==17 && Consigneeid!='')
-//    			{
-
-//    				$.post('search',{'Vin_number':vin,'Consigneeid':Consigneeid,  "_token": "{{ csrf_token() }}",}, function(data)
-//    				{
-//    					$("#car").show();
-//    					if(alertOnce===false)
-//    					{
-//    						alertOnce= true;
-//    						var html = "";
-//    						var res = JSON.parse(data);
-// html= "<form action='update' method='POST'>";
-// html+= '<input type="text" name="_token" value="{{csrf_token()}}" >';
-
-// html+= "<table class='table table-striped'>";
-// html += "<thead>";
-// html += "<th>Mark<th>";
-// html += "<th>Make<th>";
-// html += "<th>Model<th>";
-// html += "<th>Year<th>";
-// html += "<th>KM<th>";
-// html += "<th>Colour<th>";
-// html += "<th>Chassis<th>";
-// html += "<th>Compliance Centre<th>";
-// html += "<th>Vin<th>";
-
-
-
-// html += "</thead>";
-// html += "<tbody>";
-// html += "<tr>";
-// 	html += "<td>"+ res.mark + "<td>";
-// 	html += "<td>"+ res.make + "<td>";
-// 	html += "<td>"+ res.model + "<td>";
-// 	html += "<td>"+ res.year + "<td>";
-// 	html += "<td>"+ res.km + "<td>";
-// 	html += "<td>"+ res.colour + "<td>";
-// 	html += "<td>"+ res.chassis + "<td>";
-// 	html += "<td>"+ res.deregreleasedto + "<td>";
-// 	// html += "<td>"+ res.vin + "<td>";
-
-// 	html+=  '<input type="text" name="new_vin" value="'+res.vin+'">';
-// 	html+=  '<button type="submit" > Update</button>';
-// html += "</tr>";
-// html += "</tbody>";
-// html += "</table>";
-// html+= "</form>";
-
-// 	   					$("#car").append(html);
-// 	   					alert('loaded data' + data);
-//    					}
-//    				});
-
-//    			}
-//    			console.log(vin.length);
-// 	});
-
-//     });
-// });
-
+   });
 
 
 </script>

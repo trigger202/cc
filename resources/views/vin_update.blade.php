@@ -51,7 +51,7 @@
 
 								<td>
 									<input type="text" name="new_vin" value="{{$car['vin']}}">
-									<button type="submit" > Update</button>
+									<button type="submit" class="btn btn-primary" >Save</button>
 								</td>
 							</form>
 

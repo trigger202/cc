@@ -56,15 +56,12 @@ public function show(Request $request)
 	 }
 
 
-
 	 if(!isset($input['Vin_number']))
 	 {
 		 if(count($query)<4)
 		 {
-
-		    flash('<ul><li>Filter more please...Will not be able to find the vehicle like this.</li></ul>')->error();
-
-			 return redirect('vin')->withInput($input );
+			flash('<ul><li>Filter more please...Will not be able to find the vehicle like this.</li></ul>')->error();
+			return redirect('vin')->withInput($input);
 		 }
 	 }
 
@@ -84,10 +81,26 @@ public function show(Request $request)
 
 
 
-    flash('<ul><li>No matching record found.</li></ul>')->error();
+   	flash('<ul><li>No matching record found.</li></ul>')->error();
 	 return redirect ('vin')->withInput($input );
 
 }
+
+public function LookForVIn(Request $request)
+{
+
+	$query['Vin_number']= $request->Vin_number;
+	$query['Consigneeid']= $request->Consigneeid;
+
+
+	 $apiClient = new CCAPI_Client();
+	 $res = $apiClient->vin_search($query);
+	 $result = json_decode($res,true);
+
+	echo $result['result'];
+
+}
+
 
 
 public function store(Request $request)

@@ -32,6 +32,8 @@ route::get('/customers', 'ComplianceCentreController@getCustomers');
 route::get('/vin', 'VinController@index');
 route::POST('/search', 'VinController@show');
 route::POST('/update', 'VinController@store');
+route::POST('/background_search', 'VinController@LookForVIn');
+
 
 
 
